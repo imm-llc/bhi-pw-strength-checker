@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Password Strength Results</h1>
+
+<div class="RESULT">
+        {% autoescape false %} {{ breach_message }} {% endautoescape %}
+</div>
+
+<div class="bestPractices">
+        {% autoescape false %} {{ best_practice_result['length'] }} {% endautoescape %}
+</div>
+
+{% endblock %}
