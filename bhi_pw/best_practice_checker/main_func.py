@@ -24,8 +24,8 @@ def check_best_practices(password):
     else:
         json_response['number'] = "bad"
 
-    for character in character_list:
-        if character in password.strip().split():
+    for character in list(password):
+        if character in character_list:
             json_response['special_char'] = "ok"
         else:
             json_response['special_char'] = "bad"

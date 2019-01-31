@@ -25,7 +25,9 @@ def main_func(password):
         hashSuffix, count = line.split(':')
 
         if hashSuffix == PwndedHashSuffix:
-            return str(count)
-        else:
-            return 0
+            return count
+            break
+            
+    else:
+        return 0
 
