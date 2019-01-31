@@ -9,7 +9,10 @@
 </div>
 
 <div class="bestPractices">
-        {% autoescape false %} {{ best_practice_result['length'] }} {% endautoescape %}
+        {% autoescape false %} {{ best_practice_result['length'] }} {% endautoescape %}<br>
+        {% autoescape false %} {{ best_practice_result['uppercase'] }} {% endautoescape %}<br>
+        {% autoescape false %} {{ best_practice_result['number'] }} {% endautoescape %}<br>
+        {% autoescape false %} {{ best_practice_result['special_char'] }} {% endautoescape %}<br>
 </div>
 
 {% endblock %}

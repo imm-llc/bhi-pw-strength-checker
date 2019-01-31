@@ -10,8 +10,8 @@ def homepage():
         password = request.form.get('Password')
         pwned_password_count = pwndpw.main_func(str(password))
         print(pwned_password_count)
-        pwned_password_count = int(pwned_password_count)
-        if pwned_password_count > 0:
+        
+        if int(pwned_password_count) > 0:
             pwned_message = "Your password has been found in {} breaches".format(str(pwned_password_count))
         else:
             pwned_message = "This password was not found in any breaches"
