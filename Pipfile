@@ -3,3 +3,4 @@ flask
 flask-dotenv
 python-dotenv
 gunicorn
+flask-bootstrap
