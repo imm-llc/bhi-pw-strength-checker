@@ -2,7 +2,7 @@
 import re, json
 def check_best_practices(password):
     letter_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    character_list = "@#$%^&*()_+="
+    character_list = ['@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=']
     number_list = "1234567890"
 
     json_response = {}
@@ -27,8 +27,9 @@ def check_best_practices(password):
     for character in list(password):
         if character in character_list:
             json_response['special_char'] = "ok"
-        else:
-            json_response['special_char'] = "bad"
+            break
+    else:
+        json_response['special_char'] = "bad"
 
 
     return json.dumps(json_response)
