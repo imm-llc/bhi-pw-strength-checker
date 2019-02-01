@@ -2,7 +2,7 @@
 import re, json
 def check_best_practices(password):
     letter_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    character_list = ['@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=']
+    character_list = ['@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '!']
     number_list = "1234567890"
 
     json_response = {}
