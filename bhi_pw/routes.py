@@ -49,4 +49,4 @@ def homepage():
 
 @app.route('/about', methods=["GET"])
 def about():
-    return "hello world"
+    return render_template('about.html')

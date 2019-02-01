@@ -2,7 +2,87 @@
 
 {% block content %}
 
-<h3>Example heading <span class="label label-default">New</span></h3>
+<h1>Is This Tool Secure? <span class="label label-success">Yes</span></h1>
 
 
+First and foremost, your password is NOT stored anywhere. There's more info on that in the "How does this work" section. 
+<br>
+<br>
+
+The site is served over HTTPS; older versions of SSL and TLS are disabled. You cannot force the site to downgrade its security.
+<br>
+<br>
+This tool is "inside the wire". It's run on our local network, so your traffic can't get intercepted in Cleveland or redirected to China because someone at Comcast didn't double check their work.
+<br>
+
+<div class="page-header">
+<h2>How Does it Work?</h2>
+</div>
+
+When you enter your password to be checked, two things happen:
+<br>
+
+<ul>
+    <li>
+        Your password is hashed and checked against the Pwned Passwords database.
+    </li>
+    <li>
+        Your password is checked against a common "best practices" list
+    </li>
+</ul>
+
+
+If you're interested in what Pwned Passwords is, or if you haven't heard of it before, click <a href="https://haveibeenpwned.com/Passwords"> this</a> link to find out more.
+<br>
+<br>
+
+Basically, everytime a data breach happens, hashes of the passwords are added to this database. 
+<br>
+<br>
+
+We take the first five characters of your password hash (the prefix), send that to Pwned Passwords, and receive a list of hash suffixes. 
+<br>
+<br>
+From there, we compare the last 35 characters of your password hash to what we received from Pwned Passwords.
+<br>
+<br>
+Take the password <code>test213</code>
+<br>
+<br>
+Here's the full hash:
+<br>
+<pre><code>A0B02F4C6C2C0646BAB2EE9C9FC58BA86CA1C560</code></pre>
+<br>
+We send this (the hash prefix) to Pwned Passwords:
+<pre><code>A0B02</code></pre>
+<br>
+And receive a list of hash suffixes and counts, separated by a colon.
+<br>
+<pre><code>A0B02F4C6C2C0646BAB2EE9C9FC58BA86CA1C560:15045</code></pre>
+<br>
+We go through each in the response from Pwned Passwords and see if we find a match for your hash suffix. In the case of match, we grab the total count and use that to show you how many times that password has been exposed in a breach.
+In this case, <code>test213</code> has been exposed in 15045 breaches
+<br>
+<br>
+The next step is to check the password against common best practices. The usual suspects, uppercase, number, etc.
+<br>
+<br>
+This part is pretty boring. It's simple string matching.
+<br>
+<br>
+<h1>Is This the Definite Source for Password Strength? <span class="label label-danger">No</span></h1>
+The best passwords are either
+<ul>
+    <li>The ones you can't remember. Like <code>o4kjTZ6aFPqLT3W/2kdbfMdiXGPXGLV+u1bwhYj0rdCX7k99dgkVYaAs0faBJDipxQ==</code></li>
+    <li>Complex phrases. Like <code>battery3horse4STAPLE!cart</code></li>
+</ul>        
+This is why a password manager like LastPass or 1Password is so important.
+<br>
+<br>
+If your go-to password is <code>R3d5t@pl3r</code>, you're in trouble. That password will get green marks on the password best practices check of this tool, but it's super weak.
+<br>
+<br>
+
+<a href="https://github.com/imm-llc/bhi-pw-strength-checker">Sourcecode on GitHub</a>
+<br>
 {% endblock %}
