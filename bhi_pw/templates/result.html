@@ -5,14 +5,64 @@
 <h1> Password Strength Results</h1>
 
 <div class="RESULT">
-        {% autoescape false %} {{ breach_message }} {% endautoescape %}
+        {% autoescape false %}
+        {% if breach_message == "This password was not found in any breaches" %}
+        <div class="alert alert-success" role="alert">
+                {{ breach_message }}
+        </div>
+        <br>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+                {{ breach_message }}
+        </div>
+        <br>
+        {% endif %}
+        {% endautoescape %}
 </div>
 
 <div class="bestPractices">
-        {% autoescape false %} {{ best_practice_result['length'] }} {% endautoescape %}<br>
-        {% autoescape false %} {{ best_practice_result['uppercase'] }} {% endautoescape %}<br>
-        {% autoescape false %} {{ best_practice_result['number'] }} {% endautoescape %}<br>
-        {% autoescape false %} {{ best_practice_result['special_char'] }} {% endautoescape %}<br>
+        {% if best_practice_result['length'] == "Your password is long. Great!" %}
+        <div class="alert alert-success" role="alert">
+                {{ best_practice_result['length'] }}
+        </div>
+        <br>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+                {{ best_practice_result['length'] }}
+        </div>
+        <br>
+        {% endif %}
+
+        {% if best_practice_result['uppercase'] == "You have at least one uppercase character. Nice!" %}
+        <div class="alert alert-success" role="alert">
+                {{ best_practice_result['uppercase'] }}
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+                {{ best_practice_result['uppercase'] }}
+        </div>
+        <br>
+        {% endif %}
+        {% if best_practice_result['number'] == "You have at least one number in your password. Sweet!" %}
+        <div class="alert alert-success" role="alert">
+                {{ best_practice_result['number'] }}
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+                {{ best_practice_result['number'] }}
+        </div>
+        <br>
+        {% endif %}
+        {% if best_practice_result['special_char'] == "You have a special character in your password. Awesome!" %}
+        <div class="alert alert-success" role="alert">
+                {{ best_practice_result['special_char'] }}
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+                {{ best_practice_result['special_char'] }}  
+        </div>
+        {% endif %}
+
 </div>
 
 {% endblock %}
