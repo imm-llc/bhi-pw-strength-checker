@@ -7,4 +7,4 @@ User=bhipwcUser
 Group=bhipwcUser
 WorkingDirectory=/opt/bhi-pw-strength-checker
 Environment="PATH=$PATH:/opt/bhi-pw-strength-checker/"
-ExecStart=/usr/local/bin/gunicorn --workers 5 -b 127.0.0.1:5000 bhiOpsDash:app
+ExecStart=/usr/local/bin/gunicorn --workers 5 -b 127.0.0.1:5000 bhipwc:app
